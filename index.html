@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imag/png" href="dice_images/favicon.png">
+    <title>Dice Roller</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Dice Roller</h1>
+        <label>Number of Dice</label>
+        <input type="number" id="numOfDice" value="1" min="1">
+        <button id="getSound" onclick="rollDice() ">Roll Dice</button>
+        <div id="diceResult"></div>
+        <div id="diceImages"></div>
+    </div>
+
+<script>
+  // 1. Preload the dice roll sound effect
+  const diceSound = new Audio('freesound_community-diceland-90279.mp3'); 
+
+  // 2. Target the button
+  const rollBtn = document.getElementById('getSound');
+
+  // 3. Add the click event listener
+  rollBtn.addEventListener('click', () => {
+    // Rewind to the start so rapid clicks play the sound instantly every time
+    diceSound.currentTime = 0; 
+    
+    // Play the sound
+    diceSound.play().catch(error => {
+      console.log("Audio playback failed. Ensure user interacted with the page:", error);
+    });
+
+    // (Optional) Your dice rolling logic goes here!
+    console.log("Dice rolled!");
+  });
+</script>
+<script src="index.js"></script>
+
+</body>
+</html>
